@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PR Roast</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="popup-logo">
+        <span class="popup-logo-icon">🔥</span>
+        <h1 class="popup-title">PR Roast</h1>
+      </div>
+      <span class="popup-version">v1.0</span>
+    </div>
+    <div class="popup-tabs">
+      <button class="popup-tab active" data-tab="settings" id="tab-settings">⚙️ Settings</button>
+      <button class="popup-tab" data-tab="history" id="tab-history">📜 History</button>
+    </div>
+    <div class="popup-panel active" id="panel-settings">
+      <div class="setting-group">
+        <label class="setting-label" for="provider-select">LLM Provider</label>
+        <select id="provider-select" class="setting-select">
+          <option value="openai">OpenAI (GPT-4o-mini)</option>
+          <option value="anthropic">Anthropic (Claude 3.5 Haiku)</option>
+          <option value="gemini">Google (Gemini 2.0 Flash)</option>
+        </select>
+      </div>
+      <div class="setting-group">
+        <label class="setting-label" for="api-key-input">API Key</label>
+        <div class="setting-key-row">
+          <input type="password" id="api-key-input" class="setting-input" placeholder="Enter your API key..." autocomplete="off">
+          <button id="toggle-key-visibility" class="setting-toggle-btn" aria-label="Toggle key visibility">👁️</button>
+        </div>
+        <div class="setting-key-help" id="key-help">
+          <a href="#" id="key-help-link" target="_blank" rel="noopener">Get an API key →</a>
+        </div>
+      </div>
+      <div class="setting-actions">
+        <button id="save-settings" class="popup-btn popup-btn-primary">💾 Save</button>
+        <button id="test-connection" class="popup-btn popup-btn-secondary">🔌 Test</button>
+      </div>
+      <div class="setting-status" id="setting-status"></div>
+    </div>
+    <div class="popup-panel" id="panel-history">
+      <div class="history-list" id="history-list">
+        <div class="history-empty" id="history-empty">
+          <span class="history-empty-icon">🍃</span>
+          <p>No PRs roasted yet</p>
+          <p class="history-empty-sub">Visit a GitHub PR and click "🔥 Roast this PR"</p>
+        </div>
+      </div>
+      <div class="history-footer" id="history-footer" style="display: none;">
+        <button id="clear-history" class="popup-btn popup-btn-danger">🗑️ Clear History</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

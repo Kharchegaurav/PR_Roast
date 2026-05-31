@@ -1,0 +1,154 @@
+/* ═══════════════════════════════════════════════════════════════
+   content.css — Styles for injected UI elements on GitHub PR pages
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Roast Button ─── */
+.pr-roast-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: linear-gradient(135deg, #da3633, #b62324);
+  border: 1px solid rgba(248, 81, 73, 0.4);
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.pr-roast-trigger-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.pr-roast-trigger-btn:hover {
+  background: linear-gradient(135deg, #f85149, #da3633);
+  border-color: #f85149;
+  box-shadow: 0 2px 8px rgba(248, 81, 73, 0.3);
+  transform: translateY(-1px);
+}
+
+.pr-roast-trigger-btn:hover::before {
+  opacity: 1;
+}
+
+.pr-roast-trigger-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.pr-roast-trigger-btn.pr-roast-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.pr-roast-trigger-btn .pr-roast-btn-flame {
+  font-size: 14px;
+  animation: pr-roast-btn-wiggle 2s ease-in-out infinite;
+}
+
+@keyframes pr-roast-btn-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg) scale(1.1); }
+  75% { transform: rotate(8deg) scale(1.1); }
+}
+
+/* ─── Status Badges (next to PR title) ─── */
+.pr-roast-status-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  font-size: 16px;
+  cursor: default;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+
+.pr-roast-status-badge:hover {
+  transform: scale(1.2);
+}
+
+.pr-roast-status-badge.pr-roast-fire {
+  animation: pr-roast-pulse-fire 2s ease-in-out infinite;
+}
+
+@keyframes pr-roast-pulse-fire {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pr-roast-status-badge.pr-roast-fixed {
+  opacity: 0.8;
+}
+
+/* ─── Tooltip ─── */
+.pr-roast-tooltip {
+  position: relative;
+}
+
+.pr-roast-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  background: #1b1f23;
+  color: #f0f6fc;
+  border: 1px solid #30363d;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 100;
+}
+
+.pr-roast-tooltip:hover::after {
+  opacity: 1;
+}
+
+/* ─── Score badge inline ─── */
+.pr-roast-score-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.pr-roast-score-low {
+  background: rgba(46, 160, 67, 0.15);
+  color: #3fb950;
+  border: 1px solid rgba(46, 160, 67, 0.3);
+}
+
+.pr-roast-score-mid {
+  background: rgba(210, 153, 34, 0.15);
+  color: #d29922;
+  border: 1px solid rgba(210, 153, 34, 0.3);
+}
+
+.pr-roast-score-high {
+  background: rgba(248, 81, 73, 0.15);
+  color: #f85149;
+  border: 1px solid rgba(248, 81, 73, 0.3);
+}

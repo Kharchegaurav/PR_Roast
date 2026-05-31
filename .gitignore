@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment / Secrets
+.env
+.env.local
+*.key
+*.pem
+
+# Build artifacts
+dist/
+build/
+*.crx
+*.zip
+
+# Logs
+*.log
+npm-debug.log*
+
+# Chrome extension packaging
+web-ext-artifacts/
